@@ -23,7 +23,7 @@ const BirthdayCake: React.FC<BirthdayCakeProps> = ({ onAllCandlesOut }) => {
     <div className="relative w-64 h-64 mx-auto mt-10">
       {/* Cake Base */}
       <div className="absolute bottom-0 w-full h-32 bg-gradient-to-b from-rose-300 to-rose-400 rounded-lg shadow-2xl flex items-end justify-center overflow-hidden border-b-4 border-rose-600">
-        <div className="w-full text-center text-white font-script text-xl opacity-90 mb-4 z-10 drop-shadow-md">Malihatul</div>
+        <div className="w-full text-center text-white font-script text-xl opacity-90 mb-4 z-10 drop-shadow-md">Uswaa</div>
         {/* Frosting drips */}
         <div className="absolute top-0 w-8 h-8 bg-white rounded-full -mt-4 -ml-20 shadow-sm"></div>
         <div className="absolute top-0 w-8 h-8 bg-white rounded-full -mt-4 -ml-4 shadow-sm"></div>

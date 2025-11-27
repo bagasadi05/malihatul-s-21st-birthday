@@ -113,7 +113,7 @@ const PhotoGallery: React.FC = () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Happy Birthday Malihatul!',
+          title: 'Happy Birthday Uswaa!',
           text: selectedPhoto.caption,
           url: window.location.href
         });

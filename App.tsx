@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, animate } from 'framer-motion';
-import { Heart, Music, Stars, Gift, Sparkles } from 'lucide-react';
+import { Heart, Music, Stars, Gift, Sparkles, ArrowUp } from 'lucide-react';
 import Confetti from './components/Confetti';
 import Fireworks from './components/Fireworks';
 import FloatingHearts from './components/FloatingHearts';
@@ -12,6 +12,7 @@ import PhotoGallery from './components/PhotoGallery';
 import Timeline from './components/Timeline';
 import LoadingScreen from './components/LoadingScreen';
 import EasterEgg from './components/EasterEgg';
+import BackgroundParticles from './components/BackgroundParticles';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -158,6 +159,7 @@ const App: React.FC = () => {
       <Confetti active={cakeDone} />
       <Fireworks active={cakeDone} />
       {started && <FloatingHearts />}
+      {started && <BackgroundParticles />}
       <BackgroundMusic show={showMusic} />
       <div onClick={() => setShowPoeticMessage(false)}>
         <PoeticMessage show={showPoeticMessage} />
@@ -216,7 +218,7 @@ const App: React.FC = () => {
                 }}
                 className="drop-shadow-sm"
               >
-                Malihatul Quswa
+                Uswaa
               </motion.span>
             </motion.h1>
 
@@ -363,7 +365,23 @@ const App: React.FC = () => {
 
         </main>
       </motion.div>
-    </div>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {scrolled && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-6 right-6 z-40 bg-rose-500 text-white p-3 rounded-full shadow-lg hover:bg-rose-600 transition-colors"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="w-6 h-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div >
   );
 };
 

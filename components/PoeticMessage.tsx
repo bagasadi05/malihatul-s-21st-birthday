@@ -35,13 +35,13 @@ const PoeticMessage: React.FC<PoeticMessageProps> = ({ show }) => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black/30 backdrop-blur-sm"
                 >
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0, y: 50 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.6, type: "spring" }}
-                        className="max-w-2xl w-full bg-white/95 backdrop-blur-xl rounded-[3rem] p-12 shadow-2xl border-4 border-white/50 pointer-events-auto relative overflow-hidden"
+                        className="max-w-2xl w-full bg-white/95 backdrop-blur-xl rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 shadow-2xl border-4 border-white/50 pointer-events-auto relative overflow-y-auto max-h-[85vh] md:max-h-none md:overflow-visible"
                     >
                         {/* Decorative gradient overlay */}
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-400 via-pink-400 to-rose-400" />
@@ -63,10 +63,10 @@ const PoeticMessage: React.FC<PoeticMessageProps> = ({ show }) => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.5 + index * 0.15, duration: 0.4 }}
                                     className={`
-                    ${line === "" ? "h-4" : ""}
-                    ${line.includes("Bagas") ? "text-2xl font-script text-rose-600 mt-6" : "text-lg text-gray-700 leading-relaxed"}
-                    ${line.includes("Untuk Uswaa") ? "text-2xl font-script text-rose-500 font-bold mb-4" : ""}
-                    ${line.includes("Selamat ulang tahun") ? "text-xl font-bold text-rose-600 mt-4" : ""}
+                    ${line === "" ? "h-2 md:h-4" : ""}
+                    ${line.includes("Bagas") ? "text-xl md:text-2xl font-script text-rose-600 mt-4 md:mt-6" : "text-sm md:text-lg text-gray-700 leading-relaxed"}
+                    ${line.includes("Untuk Uswaa") ? "text-xl md:text-2xl font-script text-rose-500 font-bold mb-2 md:mb-4" : ""}
+                    ${line.includes("Selamat ulang tahun") ? "text-lg md:text-xl font-bold text-rose-600 mt-2 md:mt-4" : ""}
                   `}
                                 >
                                     {line}

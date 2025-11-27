@@ -59,7 +59,7 @@ const Timeline: React.FC = () => {
 
             <div className="relative">
                 {/* Timeline Line */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-200 via-rose-200 to-orange-200 hidden md:block" />
+                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-200 via-rose-200 to-orange-200" />
 
                 {/* Timeline Items */}
                 <div className="space-y-12">
@@ -70,11 +70,11 @@ const Timeline: React.FC = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.2 }}
-                            className={`flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                                } flex-col`}
+                            className={`flex items-center gap-8 md:flex-row ${index % 2 === 0 ? '' : 'md:flex-row-reverse'
+                                } flex-row`}
                         >
                             {/* Content */}
-                            <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} text-center`}>
+                            <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} text-left pl-20 md:pl-0`}>
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
                                     className="inline-block"
@@ -91,7 +91,7 @@ const Timeline: React.FC = () => {
                             <motion.div
                                 whileHover={{ scale: 1.2, rotate: 360 }}
                                 transition={{ duration: 0.5 }}
-                                className={`w-16 h-16 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow-xl z-10 border-4 border-white`}
+                                className={`absolute left-0 md:relative md:left-auto w-16 h-16 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow-xl z-10 border-4 border-white`}
                             >
                                 {item.icon}
                             </motion.div>

@@ -7,12 +7,22 @@ interface LoadingScreenProps {
 }
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
+    const [textIndex, setTextIndex] = React.useState(0);
+    const texts = ["Cantik", "Pintar", "Sholehah", "Baik Hati", "Spesial"];
+
     React.useEffect(() => {
+        const textInterval = setInterval(() => {
+            setTextIndex((prev) => (prev + 1) % texts.length);
+        }, 800);
+
         const timer = setTimeout(() => {
             onLoadingComplete();
-        }, 3000); // 3 seconds loading
+        }, 4000); // Increased to 4 seconds to show more texts
 
-        return () => clearTimeout(timer);
+        return () => {
+            clearTimeout(timer);
+            clearInterval(textInterval);
+        };
     }, [onLoadingComplete]);
 
     return (
@@ -47,20 +57,24 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             </motion.div>
 
             {/* Loading Text */}
-            <motion.h2
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 text-3xl font-script text-rose-600"
-            >
-                Menyiapkan kejutan...
-            </motion.h2>
+            <div className="h-12 mt-8 overflow-hidden relative">
+                <motion.h2
+                    key={textIndex}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-3xl font-script text-rose-600 text-center min-w-[200px]"
+                >
+                    {texts[textIndex]}...
+                </motion.h2>
+            </div>
 
             {/* Progress Bar */}
             <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: '200px' }}
-                transition={{ delay: 0.8, duration: 2 }}
+                transition={{ duration: 4, ease: "linear" }}
                 className="mt-6 h-1 bg-rose-400 rounded-full"
             />
 
